@@ -1,0 +1,34 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #1C2128;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container{
+    margin-top: 10%;
+    width: 30%;
+    height: 30%;
+    aspect-ratio: 1/1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1px;
+}
+
+.box{
+    outline: 1px solid white;
+    background-color: #22272E;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    font-size: 1.5rem;
+}
