@@ -1,6 +1,6 @@
 const player =  (marker) => {
     this.marker = marker;
-    
+
     const getmarker = () => marker;
 
     return { getmarker };
@@ -14,7 +14,6 @@ function displaygame(){
     let winner = "";
     let activePlayer = player1;
     let round = 1;
-    let gameIsOver = false;
 
     boardGame.forEach((box) => {
         box.addEventListener("click", function(){
@@ -38,16 +37,6 @@ function displaygame(){
             
         })
     })
-
-    const isEmpty = () => {
-        let res = true;
-        for (i = 0; i < boardGame.length() && res; i++){
-            if (boardGame.item(i).innerHTML != ""){
-                res = false;
-            }
-        }
-        return res;
-    }
 
     const resetGame = () => {
         game.resetboard();
@@ -86,27 +75,20 @@ function logicalGame(){
         ["2", "4", "6"],
 
     ]
-    let over = false;
     const playRound = (cell, marker) => {
-        if (!over){
-            if (board[cell] == ""){
-                board[cell] = marker;
-                if (marker == "X"){
-                    arrayX.push(cell);
-                    arrayX.sort((a,b)=> a-b);
-                } else {
-                    arrayO.push(cell);
-                    arrayO.sort((a,b) => a-b);
-                }
+        if (board[cell] == ""){
+            board[cell] = marker;
+            if (marker == "X"){
+                arrayX.push(cell);
+                arrayX.sort((a,b)=> a-b);
+            } else {
+                arrayO.push(cell);
+                arrayO.sort((a,b) => a-b);
             }
-        } else {
-            resetboard();
         }
     }
 
     const getBoardat = (cell) => board[cell];
-
-    const getLength = () => board.length;
 
     const isFinished = () => {
         let res = false;
@@ -166,7 +148,7 @@ function logicalGame(){
         board = ["", "", "", "", "", "", "", "", ""];
     }
 
-    return { playRound, getBoardat, isADraw, isFinished, resetboard, getLength};
+    return { playRound, getBoardat, isADraw, isFinished, resetboard};
 }
 
 displaygame();
