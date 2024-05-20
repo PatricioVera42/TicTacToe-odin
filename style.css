@@ -9,13 +9,48 @@ body{
     margin: 0;
     display: flex;
     align-items: center;
+    align-content: space-around;
     flex-direction: column;
+    color: white;
+}
+
+.message{
+    margin-top: 2rem;
+    font-size: 2.5rem;
+}
+
+.player-names{
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    width: 30%;
+    justify-content: center;
+}
+
+.name{
+    display: flex;
+    flex-direction: column;
+    width: calc(100% / 2);
+}
+
+.name > input {
+    background-color: #2D333B;
+    color: white;
+}
+
+.restart{
+    margin: 2.5rem;
+    background-color: #2D333B;
+    color: white;
+    border-radius: 1rem;
+    border: none;
+    padding: 0.5rem;
 }
 
 .container{
-    margin-top: 10%;
-    width: 30%;
-    height: 30%;
+    border: 1px solid lime;
+    width: 25%;
+    height: 25%;
     aspect-ratio: 1/1;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -26,7 +61,6 @@ body{
 .box{
     outline: 1px solid white;
     background-color: #22272E;
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;    
