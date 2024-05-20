@@ -25,6 +25,7 @@ function displaygame(){
                 winner = game.isFinished();
                 if (winner != ""){
                     window.alert("The winner is: " + winner);
+
                     resetGame();
                 } else {
                     winner = game.isADraw();
@@ -43,7 +44,7 @@ function displaygame(){
         passGameToDisplay();
         round = 1;
         winner = "";
-        gameIsOver = false;
+        activePlayer = player1;
     };
 
     const switchPlayer = () => {
