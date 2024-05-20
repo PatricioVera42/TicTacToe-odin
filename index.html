@@ -10,15 +10,16 @@
 
 <body>
     <div class="message">TIC TAC TOE</div>
-    <div class="player-names">
-        <div class="name">
-            <label for="player1">Player One Name:</label>
-        <input type="text" name="player1" id="player1" value="player1">
+    <div class="wins">
+        <div>
+            <div class="player-message">Player 1 Score:</div>
+        <div class="number-message">0</div>
         </div>
-        <div class="name">
-            <label for="player2">Player Two Name:</label>
-        <input type="text" name="player2" id="player2" value="player2">
+        <div>
+            <div class="player-message">Player 2 Score: </div>
+        <div class="number-message">0</div>
         </div>
+        
     </div>
     <button class="restart">RESTART</button>
     <div class="container">
@@ -32,7 +33,7 @@
         <div class="box" id="7"></div>
         <div class="box" id="8"></div>
     </div>
-    <div class="message">It's a Draw</div>
+    <h2 class="message"></h2>
     <script src="script.js"></script>
 </body>
 

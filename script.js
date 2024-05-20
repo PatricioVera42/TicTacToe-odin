@@ -7,13 +7,24 @@ const player =  (marker) => {
 }
 
 function displaygame(){
-    const player1 = player("X");
+    let player1 = player("X");
     const player2 = player("O");
     const game = logicalGame();
     const boardGame = document.querySelectorAll(".box");
+    const restartButton = document.querySelector("button");
+    const resultMessage = document.querySelector("h2");
     let winner = "";
     let activePlayer = player1;
     let round = 1;
+    let scores = document.querySelectorAll(".number-message");
+
+    restartButton.addEventListener("click", () => {
+        for (i = 0; i < scores.length; i++){
+            scores[i].innerHTML = "0";
+        }
+        resultMessage.innerHTML = "";
+        resetGame();
+    })
 
     boardGame.forEach((box) => {
         box.addEventListener("click", function(){
@@ -23,14 +34,19 @@ function displaygame(){
                 passGameToDisplay();
                 switchPlayer();
                 winner = game.isFinished();
+                passGameToDisplay();
                 if (winner != ""){
-                    window.alert("The winner is: " + winner);
-
+                    resultMessage.innerHTML = "The winner is: " + winner;
+                    if (winner == "player1"){
+                        scores[0].innerHTML = parseInt(scores[0].innerHTML) + 1;
+                    } else {
+                        scores[1].innerHTML = parseInt(scores[1].innerHTML) + 1;
+                    }
                     resetGame();
                 } else {
                     winner = game.isADraw();
                     if (winner != ""){
-                        window.alert("It's a " + winner);
+                        resultMessage.innerHTML = "It's a Draw";
                         resetGame();
                     }
                 }
@@ -71,6 +87,7 @@ function logicalGame(){
         ["3", "4", "5"],
         ["6", "7", "8"],
         ["0", "3", "6"],
+        ["1", "4", "7"],
         ["2", "5", "8"],
         ["0", "4", "8"],
         ["2", "4", "6"],
@@ -104,7 +121,6 @@ function logicalGame(){
             if (sub.length == 3){
                 arrayX = [];
                 arrayO = [];
-                resetboard();
                 return "player1";
             } 
         }
@@ -118,7 +134,6 @@ function logicalGame(){
             if (sub.length == 3){
                 arrayX = [];
                 arrayO = [];
-                resetboard();
                 return "player2";
             } 
         }
@@ -136,7 +151,6 @@ function logicalGame(){
             }
         }
         if(res){
-            resetboard();
             arrayX = [];
             arrayO = [];
             return "draw";
@@ -146,6 +160,8 @@ function logicalGame(){
     };    
 
     const resetboard = () => {
+        arrayX = [];
+        arrayO = [];
         board = ["", "", "", "", "", "", "", "", ""];
     }
 
